@@ -33,9 +33,35 @@ body {
 }
 
 img {
-  width: 100%;
+  /* 1. CONTROL DE NITIDEZ (Anti-pixelación) */
+  max-width: 100%;    /* No permite que la imagen se estire más allá de su tamaño real */
+  height: auto;        /* Mantiene la proporción original para no deformar caras/objetos */
   display: block;
   object-fit: cover;
+  
+  /* Renderizado avanzado para bordes más definidos */
+  image-rendering: -webkit-optimize-contrast; 
+  image-rendering: crisp-edges;
+
+  /* 2. ESTÉTICA DE ALTO NIVEL */
+  border-radius: 18px; /* Un radio más orgánico que el estándar */
+  background-color: #f9f9f9; /* Evita el "salto" blanco mientras carga */
+  
+  /* Sombra suave para dar profundidad (Look Apple) */
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.12);
+  
+  /* 3. INTERACCIÓN (Física fluida) */
+  transition: 
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+    box-shadow 0.5s ease;
+  will-change: transform; /* Optimiza el rendimiento de la animación */
+}
+
+/* EFECTO HOVER: Solo si quieres que el usuario sienta que la imagen es interactiva */
+img:hover {
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.05); /* Le da un toque de "luz" al pasar el mouse */
 }
 
 a {
@@ -454,57 +480,139 @@ p {
     align-items: flex-start;
   }
 
-  .main-nav.open {
-    display: flex;
-  }
-
-  .header-inner > .btn {
-    display: none;
-  }
-
-  .hero-grid,
-  .product-grid,
-  .faq-grid,
-  .prefooter-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .benefits-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-band-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
+  /* Mejoras en la Navegación Móvil */
+.main-nav {
+  position: absolute;
+  top: 70px; /* Un poco más ajustado */
+  left: 1.2rem;
+  right: 1.2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px); /* Efecto cristal moderno */
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md); /* Menú flotante, no pegado a los bordes */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+  /* Animación de entrada */
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-premium);
+  z-index: 100;
 }
 
+/* --- NAVEGACIÓN: EFECTO FLOTANTE --- */
+.main-nav {
+  /* Sustituimos el bloque rígido por una tarjeta flotante */
+  position: fixed; /* Mejor que absolute para usabilidad móvil */
+  top: 80px;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  
+  /* Animación refinada */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  opacity: 0;
+  transform: translateY(-20px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1000;
+}
+
+.main-nav.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* --- GRID SYSTEM: RITMO VISUAL --- */
+.hero-grid,
+.product-grid,
+.faq-grid,
+.prefooter-grid,
+.testimonials-grid,
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 8vw, 4rem); /* Espaciado fluido */
+}
+
+/* Las tarjetas de beneficios se ven mejor con un ligero offset */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* --- CTA BAND: ENFOQUE EN CONVERSIÓN --- */
+.cta-band-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  padding: 4rem 1.5rem;
+  background: var(--color-red-100);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- SMARTPHONES (Optimización Extrema) --- */
 @media (max-width: 620px) {
   .container {
-    width: min(var(--container), calc(100% - 1.4rem));
+    width: 90%;
   }
 
   .hero {
-    padding-top: 3rem;
+    padding: 5rem 0 3rem;
+    text-align: center;
+  }
+
+  /* Títulos con "Tracking" negativo para look de App High-end */
+  h1 {
+    font-size: clamp(2.2rem, 10vw, 2.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
   }
 
   .benefits-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
+  /* Botones con Feedback Háptico Visual */
   .btn {
     width: 100%;
+    height: 60px; /* Altura estándar de industria para pulgares */
+    font-size: 1.1rem;
+    border-radius: 18px; /* Menos circular, más "squircle" */
+    box-shadow: 0 10px 20px rgba(190, 11, 24, 0.15);
   }
 
   .hero-actions {
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  /* Separador sutil para el footer */
+  .footer-grid {
+    border-top: 1px solid var(--color-border);
+    padding-top: 3rem;
   }
 }
