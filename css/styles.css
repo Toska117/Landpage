@@ -392,6 +392,28 @@ p {
   overflow: hidden;
 }
 
+.contact-form {
+  padding: 4rem 0;
+}
+
+.contact-form-card {
+  background: var(--color-white);
+  border: 1px solid #f4d9dd;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 10px 22px rgba(214, 16, 31, 0.06);
+}
+
+.contact-form-card p {
+  color: var(--color-muted);
+  margin: 1rem 0 1.2rem;
+}
+
+.hs-form-frame {
+  width: 100%;
+  min-height: 320px;
+}
+
 .prefooter-grid {
   position: relative;
   z-index: 2;
@@ -568,6 +590,8 @@ p {
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+}
+
 }
 
 /* --- SMARTPHONES (Optimización Extrema) --- */
