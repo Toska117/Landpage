@@ -640,3 +640,160 @@ p {
     padding-top: 3rem;
   }
 }
+
+
+/*
+
+/* Fondo general */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fff5f5, #ffeaea);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Contenedor del formulario */
+form {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow:
+    0 10px 30px rgba(214, 40, 40, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decoración superior */
+form::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #ff4d4d, transparent 70%);
+  opacity: 0.15;
+  border-radius: 50%;
+}
+
+/* Título */
+.form-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #b71c1c;
+  margin-bottom: 10px;
+}
+
+/* Subtítulo */
+.form-subtitle {
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* Campos */
+.field {
+  margin-bottom: 22px;
+  position: relative;
+}
+
+/* Labels */
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #b22222;
+  letter-spacing: 0.4px;
+}
+
+/* Inputs */
+.field input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  border: 2px solid #ffd6d6;
+  border-radius: 14px;
+  background: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* Placeholder */
+.field input::placeholder {
+  color: #c7a3a3;
+}
+
+/* Hover */
+.field input:hover {
+  border-color: #ff9e9e;
+}
+
+/* Focus */
+.field input:focus {
+  border-color: #d62828;
+  box-shadow:
+    0 0 0 4px rgba(214, 40, 40, 0.12),
+    0 6px 18px rgba(214, 40, 40, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Botón */
+input[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #d62828, #ff4d4d);
+  transition: all 0.3s ease;
+  box-shadow:
+    0 8px 18px rgba(214, 40, 40, 0.25);
+}
+
+/* Hover botón */
+input[type="submit"]:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #b71c1c, #e53935);
+  box-shadow:
+    0 12px 22px rgba(214, 40, 40, 0.35);
+}
+
+/* Click */
+input[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Texto inferior */
+.form-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #999;
+}
+
+.form-footer a {
+  color: #d62828;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+

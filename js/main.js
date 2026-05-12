@@ -58,3 +58,45 @@ const revealObserver = new IntersectionObserver(
 );
 
 revealElements.forEach((element) => revealObserver.observe(element));
+
+// Google Tag Manager - WhatsApp Click Tracking
+const whatsappLinks = document.querySelectorAll('[data-gtm-event="whatsapp_click"]');
+whatsappLinks.forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const location = link.getAttribute('data-gtm-location');
+    
+    // Enviar evento a Google Tag Manager
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'whatsapp_click',
+        whatsapp_location: location,
+        timestamp: new Date().toISOString()
+      });
+    }
+  });
+});
+
+
+///
+
+const btn = document.getElementById('button');
+
+document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_kowhqnv';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+});
+///
