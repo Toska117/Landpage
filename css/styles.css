@@ -646,11 +646,6 @@ p {
 
 
 
-
-
-
-
-<style>
     * {
       margin: 0;
       padding: 0;
@@ -741,4 +736,4 @@ p {
       background: linear-gradient(135deg, #b71c1c, #e53935);
       box-shadow: 0 14px 28px rgba(214, 40, 40, 0.3);
     }
-  </style>
+  
