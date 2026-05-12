@@ -242,30 +242,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- eliminar? -->
 
 
- 
-  <form id="form">
+ <form id="form">
+  <div class="field">
+    <label for="email">email</label>
+    <input type="text" name="email" id="email">
+  </div>
 
-    <div class="field">
-      <label for="name">Nombre</label>
-      <input type="text" name="name" id="name" placeholder="Ingresa tu nombre">
-    </div>
+  <input type="submit" id="button" value="Send Email" >
+</form>
 
-    <div class="field">
-      <label for="email">Correo electrónico</label>
-      <input type="text" name="email" id="email" placeholder="ejemplo@email.com">
-    </div>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    <input type="submit" id="button" value="Enviar Registro">
-
-  </form>
-
-  <script type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-  </script>
-
-  <script type="text/javascript">
-    emailjs.init('V5wYSZCIQA5t2XUKz')
-  </script>
+<script type="text/javascript">
+  emailjs.init('V5wYSZCIQA5t2XUKz')
+</script>
 
 
 
